@@ -93,35 +93,18 @@
     text-align:center;
     font-size: 100px;
                        ">Ask Anything!</h1>
-    <form action="/" method="post" id="input-form" style="justify-content: center;" class="row">
-        <input id="input-text" class="input-design form-control" type="text" name="input_text">
-        <button id="submit-button"  class="btn btn-success" type="submit" onsubmit=""> Search</button>
+    <form action="/search_page" method="post" id="input-form" style="justify-content: center;" class="row">
+        <input id="input_text" class="input-design form-control" type="text" name="input_text">
+        <button id="submit-button"  class="btn btn-success" type="submit" onsubmit=generate_response()> Search</button>
     </form >
     <h5 style="text-align: center; padding-top : 5px;"> Results shall be shown below.</h5>
     <hr style="margin-left: 15%; margin-right: 15%; color: green;">
-    <div id="response-area" style=" text-align: center; padding-left: 20%; padding-right: 20%; color: green;">
+    <div id="response_area" style=" text-align: center; padding-left: 20%; padding-right: 20%; color: green;">
+        <p>Result:{{ response }}</p>
     </div>
 </div>
 <script>
-const form = document.getElementById('input-form');
-form.addEventListener('submit', async (event) => {
-  event.preventDefault();
 
-
-  const input = document.getElementById('input-text').value;
-
-  const response = await fetch('/', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ input: input })
-  });
-
-  const data = await response.json();
-  const responseArea = document.getElementById('response-area');
-  responseArea.innerHTML = `<h5>${data.output}</h5>`;
-});
 </script>
 </body>
 </html>

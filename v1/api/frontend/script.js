@@ -5,6 +5,7 @@ form.addEventListener('submit', async (event) => {
 
   // Get the input value from the form
   const input = document.getElementById('input-text').value;
+  print(input)
 
   // Send a POST request to the FastAPI backend
   const response = await fetch('/', {

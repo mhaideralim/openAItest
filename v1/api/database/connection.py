@@ -5,7 +5,7 @@ from beanie import init_beanie
 
 from v1.api.database import model
 from v1.api.database.settings import MongoDBSettings, origins
-from v1.api.database.model import User, Input, Response
+from v1.api.database.model import Query
 
 app = FastAPI()
 
@@ -26,7 +26,7 @@ async def init_models():
     await init_beanie(
         database=database,
         document_models=(
-           Input,
+            Query,
             # add additional models here
         ),
     )
