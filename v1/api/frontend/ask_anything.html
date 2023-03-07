@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <style>.form-control{
+    width: 245%;
+    padding: 2px, 2px, 2px, 2px;
+
+}
+.input-design{
+        width: 50%;
+        border-color: green;
+        border-ra
+}
+.cont{
+        margin-top: 7%;
+        font-size: 22px;
+        font-family: Times;
+        color: green;
+        background-color: light green;
+        padding-bottom: 20px;
+
+}
+
+		.form-control:focus {
+			border-color: #F8A426;
+			box-shadow: none;
+		}
+
+		.btn-primary {
+			background-color: #F8A426;
+			border-color: #F8A426;
+		}
+
+		.btn-primary:hover {
+			background-color: #F89E05;
+			border-color: #F89E05;
+		}
+		.form-control:focus {
+			border-color: #F8A426;
+			box-shadow: none;
+		}
+
+		.btn-primary {
+			background-color: #F8A426;
+			border-color: #F8A426;
+		}
+
+		.btn-primary:hover {
+			background-color: #F89E05;
+			border-color: #F89E05;
+		}
+
+		.invalid-feedback {
+			display: block;
+		}
+
+		.validation-error {
+			color: red;
+			font-size: 0.9rem;
+		}
+
+.account{
+    padding-top: 30px;
+    color: #F8A426;
+    text-align: center;
+}
+
+@media screen and (max-width: 600px) {
+      body {
+        font-size: 14px;
+      }
+    }
+
+    /* Media queries for even smaller screens */
+    @media screen and (max-width: 400px) {
+      body {
+        font-size: 12px;
+      }
+    }
+
+
+</style>
+
+</head>
+<body>
+<div class="cont">
+    <h3 style="text-align: center;"> Welcome to test the OpenAI Response</h3>
+    <h1 style="
+    text-align:center;
+    font-size: 100px;
+                       ">Ask Anything!</h1>
+    <form action="/" method="post" id="input-form" style="justify-content: center;" class="row">
+        <input id="input-text" class="input-design form-control" type="text" name="input_text">
+        <button id="submit-button"  class="btn btn-success" type="submit" onsubmit=""> Search</button>
+    </form >
+    <h5 style="text-align: center; padding-top : 5px;"> Results shall be shown below.</h5>
+    <hr style="margin-left: 15%; margin-right: 15%; color: green;">
+    <div id="response-area" style=" text-align: center; padding-left: 20%; padding-right: 20%; color: green;">
+    </div>
+</div>
+<script>
+const form = document.getElementById('input-form');
+form.addEventListener('submit', async (event) => {
+  event.preventDefault();
+
+
+  const input = document.getElementById('input-text').value;
+
+  const response = await fetch('/', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ input: input })
+  });
+
+  const data = await response.json();
+  const responseArea = document.getElementById('response-area');
+  responseArea.innerHTML = `<h5>${data.output}</h5>`;
+});
+</script>
+</body>
+</html>
